@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  reactStrictMode: true,
+  env: {
+    REACT_APP_URL_API: process.env.URL_API,
+  },
+}
 
-export default nextConfig;
+export default nextConfig
