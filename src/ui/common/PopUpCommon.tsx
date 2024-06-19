@@ -8,10 +8,12 @@ type Props = {
 
 const Popup: FC<Props> = ({ isOpen, handleClose, children }) => {
   if (!isOpen) return null
-
+  const handleContentClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation()
+  }
   return (
-    <div className="popupOverlay">
-      <div className="popupOverlay__content">
+    <div className="popupOverlay" onClick={handleClose}>
+      <div className="popupOverlay__content" onClick={handleContentClick}>
         <button className="popupOverlay__content__close" onClick={handleClose}>
           X
         </button>
