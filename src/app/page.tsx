@@ -1,10 +1,10 @@
 'use client'
 
 import { useHome } from '@/lib/hooks/useHome'
-import { ButtonCommon } from '@/ui/common/ButtonCommon'
-import Popup from '@/ui/common/PopUpCommon'
-import { ContactTable } from '@/ui/components/ContactTableComponent'
-import { RegisterContactComponent } from '@/ui/components/RegisterContactComponent'
+import { ButtonCommon } from '@/ui/components/common/ButtonCommon'
+import Popup from '@/ui/components/common/PopUpCommon'
+import { TableContact } from '@/ui/components/contact/TableContact'
+import { RegisterContact } from '@/ui/containers/contact/RegisterContact'
 
 export default function Home() {
   const { isOpen, listCompanies, handleClose, handleOpen } = useHome()
@@ -12,13 +12,13 @@ export default function Home() {
   return (
     <div className="home">
       <div className="home__tableContact">
-        <ContactTable />
+        <TableContact />
       </div>
       <div className="home__bottonRegister">
         <ButtonCommon text="Registrar contacto" onClick={handleOpen} />
       </div>
       <Popup isOpen={isOpen} handleClose={handleClose}>
-        {listCompanies != undefined && <RegisterContactComponent listCompanies={listCompanies} />}
+        {listCompanies != undefined && <RegisterContact listCompanies={listCompanies} />}
       </Popup>
     </div>
   )

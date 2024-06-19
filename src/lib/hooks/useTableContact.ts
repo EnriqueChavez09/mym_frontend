@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { ContactService } from '../services/contactService'
 import { TListContact } from '../utils/type'
 
-export const useContactTable = () => {
+export const useTableContact = () => {
   const [listContacts, setlistContacts] = useState<TListContact[] | undefined>(undefined)
 
   useEffect(() => {
@@ -14,8 +14,12 @@ export const useContactTable = () => {
     })
   }, [listContacts])
 
-  const deleteContact = () => {}
-  const updateContact = () => {}
+  const deleteContact = () => {
+    console.log('delete')
+  }
+  const updateContact = () => {
+    console.log('update')
+  }
 
   return { listContacts, deleteContact, updateContact }
 }

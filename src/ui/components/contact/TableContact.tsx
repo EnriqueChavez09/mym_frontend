@@ -1,9 +1,9 @@
-import { useContactTable } from '@/lib/hooks/useContactTable'
+import { useTableContact } from '@/lib/hooks/useTableContact'
+import { AssetData } from '@/lib/utils/assets'
 import { formatDateString } from '@/lib/utils/datatime'
-import { ButtonCommon } from '../common/ButtonCommon'
 
-export const ContactTable = () => {
-  const { listContacts, deleteContact, updateContact } = useContactTable()
+export const TableContact = () => {
+  const { listContacts, deleteContact, updateContact } = useTableContact()
   return (
     <table className="contactTable">
       <thead>
@@ -27,8 +27,8 @@ export const ContactTable = () => {
               <td>{contact.company}</td>
               <td>{date}</td>
               <td>
-                <ButtonCommon text="Editar" onClick={updateContact} />
-                <ButtonCommon text="Eliminar" onClick={deleteContact} />
+                <AssetData.UpdateIcon onClick={updateContact} />
+                <AssetData.DeleteIcon onClick={deleteContact} />
               </td>
             </tr>
           )
