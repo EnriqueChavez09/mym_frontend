@@ -28,8 +28,7 @@ export const useTableContact = () => {
   }
 
   const deleteContact = (contactId: number) => {
-    ContactService.delete(contactId)
-    setUUID(generateUUID())
+    ContactService.delete(contactId).then(() => setUUID(generateUUID()))
   }
   const updateContact = (contactId: number) => {
     ContactService.detail(contactId).then((data) => {
