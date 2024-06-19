@@ -5,6 +5,7 @@ import { TListCompany } from '../utils/type'
 export const useHome = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [listCompanies, setListCompanies] = useState<TListCompany[] | undefined>(undefined)
+  const [uuid, setUUID] = useState<string>('')
 
   useEffect(() => {
     if (listCompanies != undefined) return
@@ -20,7 +21,10 @@ export const useHome = () => {
   return {
     isOpen,
     listCompanies,
+    uuid,
     handleOpen,
     handleClose,
+    setIsOpen,
+    setUUID,
   }
 }

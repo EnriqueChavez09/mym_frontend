@@ -17,18 +17,18 @@ export const TableContact = () => {
         </tr>
       </thead>
       <tbody>
-        {listContacts?.map((contact) => {
+        {listContacts?.map((contact, index) => {
           const date = formatDateString(contact.created)
           return (
             <tr key={contact.id}>
-              <td>{contact.id}</td>
+              <td>{index + 1}</td>
               <td>{contact.fullNames}</td>
               <td>{contact.phone}</td>
               <td>{contact.company}</td>
               <td>{date}</td>
               <td>
                 <AssetData.UpdateIcon onClick={updateContact} />
-                <AssetData.DeleteIcon onClick={deleteContact} />
+                <AssetData.DeleteIcon onClick={() => deleteContact(contact.id)} />
               </td>
             </tr>
           )

@@ -1,3 +1,9 @@
 body {
   font-family: $ffPoppins;
 }
+.inputError {
+  color: rgb(231, 30, 30) !important;
+  font-size: 10px !important;
+  margin: 0 !important;
+  height: 16px;
+}
