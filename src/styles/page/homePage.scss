@@ -1,12 +1,11 @@
 .home {
   margin: 20px;
+  &__title {
+    text-align: center;
+  }
   &__bottonRegister {
-    margin-top: 20px;
-    display: flex;
-    justify-content: flex-end;
-    button {
-      height: 40px;
-    }
+    margin: 20px 0 auto auto;
+    width: 150px;
   }
   &__tableContact {
     overflow: auto;

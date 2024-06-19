@@ -3,7 +3,11 @@
   cursor: pointer;
   border-radius: 6px;
   border-color: transparent;
-
+  background-color: $primaryColor;
+  color: $tertiaryColor;
+  font-family: $ffPoppins;
+  height: 40px;
+  width: 100%;
   &__loading {
     display: grid;
     place-content: center;

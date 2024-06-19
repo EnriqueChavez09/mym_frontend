@@ -13,26 +13,22 @@ export const RegisterContact: FC<Props> = ({ listCompanies }) => {
   const { listOptionCompanies, registerContact } = useRegisterContact({ listCompanies })
 
   return (
-    <div className="registerContact">
-      <div className="registerContact__title">
+    <div className="cruContact">
+      <div className="cruContact__title">
         <h2>Registrar contacto</h2>
       </div>
-      <div className="registerContact__input">
-        <InputCommon type="text" placeholder="Nombres completos" />
+      <div className="cruContact__input">
+        <InputCommon type="text" label="Nombres completos" placeholder="Ingrese sus nombres completos" />
       </div>
-      <div className="registerContact__input">
-        <InputCommon type="text" placeholder="Correo" />
+      <div className="cruContact__input two">
+        <InputCommon type="text" label="Correo" placeholder="Ingrese su correo" />
+        <InputCommon type="text" label="Celular" placeholder="Ingrese su celular" />
       </div>
-      <div className="registerContact__input">
-        <InputCommon type="text" placeholder="Celular" />
+      <div className="cruContact__input two">
+        <InputCommon type="text" label="Dirección" placeholder="Ingrese su dirección" />
+        <SelectCommon listOptions={listOptionCompanies} label="Empresa" placeholder="Seleccione un empresa" />
       </div>
-      <div className="registerContact__input">
-        <InputCommon type="text" placeholder="Dirección" />
-      </div>
-      <div className="registerContact__input">
-        <SelectCommon listOptions={listOptionCompanies} placeholder="Seleccione un empresa" />
-      </div>
-      <div className="registerContact__button">
+      <div className="cruContact__button">
         <ButtonCommon text="Registrar" onClick={registerContact} />
       </div>
     </div>

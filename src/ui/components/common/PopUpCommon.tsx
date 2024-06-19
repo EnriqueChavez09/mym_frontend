@@ -1,3 +1,4 @@
+import { AssetData } from '@/lib/utils/assets'
 import { FC } from 'react'
 
 type Props = {
@@ -15,7 +16,7 @@ const Popup: FC<Props> = ({ isOpen, handleClose, children }) => {
     <div className="popupOverlay" onClick={handleClose}>
       <div className="popupOverlay__content" onClick={handleContentClick}>
         <button className="popupOverlay__content__close" onClick={handleClose}>
-          X
+          <AssetData.CloseIcon />
         </button>
         {children}
       </div>

@@ -8,10 +8,10 @@ td {
   border: 1px solid #ccc;
   padding: 8px;
   text-align: center;
-  button {
-    margin: auto 5px;
-    width: 100px;
-    height: 24px;
+  font-size: 14px;
+  svg {
+    margin: auto 8px;
+    cursor: pointer;
   }
 }
 
