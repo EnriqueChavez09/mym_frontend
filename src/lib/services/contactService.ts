@@ -7,9 +7,16 @@ export class ContactService {
     try {
       await apiClientWithToken.post(`contacts/`, body, {})
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        if (error.response && error.response.status === 500) {
+      if (axios.isAxiosError(error) && error.response) {
+        const data = error.response.data
+        if (error.response.status === 500) {
           throw { error: 'Error del servidor. Inténtalo de nuevo más tarde.' }
+        }
+        if (error.response.status === 400) {
+          throw {
+            phone: data?.phone ? data?.phone[0] : undefined,
+            email: data?.email ? data?.email[0] : undefined,
+          }
         }
         throw { error: 'Algo salió mal. Inténtalo de nuevo.' }
       } else {
@@ -22,9 +29,16 @@ export class ContactService {
     try {
       await apiClientWithToken.patch(`contacts/${contactId}/`, body, {})
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        if (error.response && error.response.status === 500) {
+      if (axios.isAxiosError(error) && error.response) {
+        const data = error.response.data
+        if (error.response.status === 500) {
           throw { error: 'Error del servidor. Inténtalo de nuevo más tarde.' }
+        }
+        if (error.response.status === 400) {
+          throw {
+            phone: data?.phone ? data?.phone[0] : undefined,
+            email: data?.email ? data?.email[0] : undefined,
+          }
         }
         throw { error: 'Algo salió mal. Inténtalo de nuevo.' }
       } else {

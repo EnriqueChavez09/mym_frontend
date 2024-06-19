@@ -9,7 +9,7 @@ const nextConfig = {
 
     return config
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
   env: {
     REACT_APP_URL_API: process.env.URL_API,
   },

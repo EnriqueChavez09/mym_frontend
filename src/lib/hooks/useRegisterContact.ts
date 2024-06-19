@@ -24,6 +24,7 @@ export const useRegisterContact = ({ listCompanies, setIsOpen, isCreate, contact
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<TCRUContact>({
     defaultValues: initialContact,
   })
@@ -43,7 +44,8 @@ export const useRegisterContact = ({ listCompanies, setIsOpen, isCreate, contact
         setUUID(generateUUID())
       })
       .catch((errors) => {
-        console.log(errors)
+        errors['phone'] && setError('phone', { message: errors['phone'] })
+        errors['email'] && setError('email', { message: errors['email'] })
       })
   }
   const updateContact = (data: TCRUContact) => {
@@ -57,10 +59,10 @@ export const useRegisterContact = ({ listCompanies, setIsOpen, isCreate, contact
         setUUID(generateUUID())
       })
       .catch((errors) => {
-        console.log(errors)
+        errors['phone'] && setError('phone', { message: errors['phone'] })
+        errors['email'] && setError('email', { message: errors['email'] })
       })
   }
-
   return {
     listOptionCompanies,
     errors,
