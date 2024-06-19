@@ -3,6 +3,7 @@
 import { ButtonCommon } from '@/ui/common/ButtonCommon'
 import Popup from '@/ui/common/PopUpCommon'
 import { ContactTable } from '@/ui/components/ContactTableComponent'
+import { RegisterContactComponent } from '@/ui/components/RegisterContactComponent'
 import { useState } from 'react'
 
 export default function Home() {
@@ -13,14 +14,13 @@ export default function Home() {
   return (
     <div className="home">
       <div className="home__bottonRegister">
-        <ButtonCommon text="Resgistrar contacto" onClick={handleOpen} />
+        <ButtonCommon text="Registrar contacto" onClick={handleOpen} />
       </div>
       <div className="home__tableContact">
         <ContactTable />
       </div>
       <Popup isOpen={isOpen} handleClose={handleClose}>
-        <h2>Popup Content Here</h2>
-        <p>This is a simple popup. You can place any content here, such as a form.</p>
+        <RegisterContactComponent />
       </Popup>
     </div>
   )

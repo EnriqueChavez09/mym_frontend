@@ -1,4 +1,9 @@
 .buttonCommon {
+  text-align: center;
+  cursor: pointer;
+  p {
+    margin: 0 auto;
+  }
   &__loading {
     display: grid;
     place-content: center;

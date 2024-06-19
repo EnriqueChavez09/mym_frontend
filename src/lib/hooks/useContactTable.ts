@@ -14,5 +14,8 @@ export const useContactTable = () => {
     })
   }, [listContacts])
 
-  return { listContacts }
+  const deleteContact = () => {}
+  const updateContact = () => {}
+
+  return { listContacts, deleteContact, updateContact }
 }
