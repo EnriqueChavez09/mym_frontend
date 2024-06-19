@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import { ContactService } from '../services/contactService'
 import { generateUUID } from '../utils/functions'
-import { TListContact } from '../utils/type'
+import { TCRUContact, TListContact } from '../utils/type'
 import { useUpdateTableContact } from './useUpdateTableContact'
 
 export const useTableContact = () => {
   const [listContacts, setlistContacts] = useState<TListContact[] | undefined>(undefined)
   const { uuid, setUUID } = useUpdateTableContact()
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [contact, setContact] = useState<TCRUContact>()
 
   useEffect(() => {
     if (listContacts != undefined) return
@@ -29,9 +31,15 @@ export const useTableContact = () => {
     ContactService.delete(contactId)
     setUUID(generateUUID())
   }
-  const updateContact = () => {
-    console.log('update')
+  const updateContact = (contactId: number) => {
+    ContactService.detail(contactId).then((data) => {
+      if (data === undefined) return
+      setContact(data)
+      handleOpen()
+    })
   }
 
-  return { listContacts, deleteContact, updateContact }
+  const handleOpen = (): void => setIsOpen(true)
+  const handleClose = (): void => setIsOpen(false)
+  return { listContacts, contact, isOpen, deleteContact, updateContact, handleClose, setIsOpen }
 }

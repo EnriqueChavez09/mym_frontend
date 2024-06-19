@@ -5,3 +5,15 @@ export const generateUUID = () => {
     return v.toString(16)
   })
 }
+
+export const getDataModify = <T extends object>(
+  properties: (keyof T)[],
+  body: Partial<T>,
+  initialContact: T
+): void => {
+  properties.forEach((property) => {
+    if (body[property] === initialContact[property]) {
+      delete body[property]
+    }
+  })
+}

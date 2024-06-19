@@ -1,25 +1,30 @@
 import { useRegisterContact } from '@/lib/hooks/useRegisterContact'
 import { Regex } from '@/lib/utils/regex'
-import { TListCompany } from '@/lib/utils/type'
+import { TCRUContact, TListCompany } from '@/lib/utils/type'
 import { ButtonCommon } from '@/ui/components/common/ButtonCommon'
 import { InputCommon } from '@/ui/components/common/InputCommon'
 import { SelectCommon } from '@/ui/components/common/SelectCommon'
 import { Dispatch, FC, SetStateAction } from 'react'
 
 type Props = {
-  setIsOpen: Dispatch<SetStateAction<boolean>>
+  isCreate: boolean
   listCompanies: TListCompany[]
+  setIsOpen: Dispatch<SetStateAction<boolean>>
+  contact?: TCRUContact
 }
 
-export const RegisterContact: FC<Props> = ({ listCompanies, setIsOpen }) => {
-  const { listOptionCompanies, handleSubmit, register, registerContact, errors } = useRegisterContact({
-    listCompanies,
-    setIsOpen,
-  })
+export const CRUContact: FC<Props> = ({ listCompanies, setIsOpen, isCreate, contact }) => {
+  const { listOptionCompanies, handleSubmit, register, registerContact, updateContact, errors } =
+    useRegisterContact({
+      listCompanies,
+      setIsOpen,
+      isCreate,
+      contact,
+    })
   return (
     <div className="cruContact">
       <div className="cruContact__title">
-        <h2>Registrar contacto</h2>
+        <h2>{isCreate ? 'Registrar contacto' : 'Editar contacto'}</h2>
       </div>
       <div className="cruContact__input">
         <InputCommon
@@ -75,7 +80,10 @@ export const RegisterContact: FC<Props> = ({ listCompanies, setIsOpen }) => {
         />
       </div>
       <div className="cruContact__button">
-        <ButtonCommon text="Registrar" onClick={handleSubmit(registerContact)} />
+        <ButtonCommon
+          text={isCreate ? 'Registrar' : 'Editar'}
+          onClick={handleSubmit(isCreate ? registerContact : updateContact)}
+        />
       </div>
     </div>
   )

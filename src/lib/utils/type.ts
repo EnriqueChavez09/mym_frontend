@@ -9,11 +9,12 @@ export type TListContact = {
 }
 
 export type TCRUContact = {
+  id: number
   fullNames: string
   phone: string
   address: string
   email: string
-  company: number
+  company: number | string
 }
 
 export type TListCompany = {

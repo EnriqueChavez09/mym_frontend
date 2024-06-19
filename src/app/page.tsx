@@ -5,7 +5,7 @@ import { useHome } from '@/lib/hooks/useHome'
 import { ButtonCommon } from '@/ui/components/common/ButtonCommon'
 import Popup from '@/ui/components/common/PopUpCommon'
 import { TableContact } from '@/ui/components/contact/TableContact'
-import { RegisterContact } from '@/ui/containers/contact/RegisterContact'
+import { CRUContact } from '@/ui/containers/contact/CRUContact'
 
 export default function Home() {
   const { isOpen, listCompanies, handleClose, handleOpen, setIsOpen, setUUID, uuid } = useHome()
@@ -17,14 +17,14 @@ export default function Home() {
           <h1>Lista de contactos</h1>
         </div>
         <div className="home__tableContact">
-          <TableContact />
+          <TableContact listCompanies={listCompanies} />
         </div>
         <div className="home__bottonRegister">
           <ButtonCommon text="Registrar contacto" onClick={handleOpen} />
         </div>
         <Popup isOpen={isOpen} handleClose={handleClose}>
           {listCompanies != undefined && (
-            <RegisterContact setIsOpen={setIsOpen} listCompanies={listCompanies} />
+            <CRUContact isCreate={true} setIsOpen={setIsOpen} listCompanies={listCompanies} />
           )}
         </Popup>
       </div>
