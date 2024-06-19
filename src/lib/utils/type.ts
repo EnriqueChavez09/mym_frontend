@@ -5,7 +5,7 @@ export type TListContact = {
   address: string
   email: string
   company: string
-  created: Date
+  created: string
 }
 
 export type TCRUContact = {
