@@ -20,3 +20,8 @@ export type TListCompany = {
   id: number
   companyName: string
 }
+
+export type TListOptionSelect = {
+  value: number
+  name: string
+}

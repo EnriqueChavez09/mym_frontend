@@ -1,8 +1,14 @@
 .home {
+  margin: 20px;
   &__bottonRegister {
-    margin-bottom: 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
     button {
       height: 40px;
     }
+  }
+  &__tableContact {
+    overflow: auto;
   }
 }

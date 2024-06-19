@@ -5,7 +5,7 @@ import { TListCompany } from '../utils/type'
 export class CompanyService {
   static list = async (): Promise<undefined | TListCompany[]> => {
     try {
-      const response = await apiClientWithToken.get(`contacts/`, {})
+      const response = await apiClientWithToken.get(`companies/`, {})
       if (response.status === 200) {
         const listOptions: TListCompany[] = response.data
         return listOptions

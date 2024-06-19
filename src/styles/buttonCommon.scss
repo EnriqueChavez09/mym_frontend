@@ -1,9 +1,9 @@
 .buttonCommon {
   text-align: center;
   cursor: pointer;
-  p {
-    margin: 0 auto;
-  }
+  border-radius: 6px;
+  border-color: transparent;
+
   &__loading {
     display: grid;
     place-content: center;
@@ -16,6 +16,10 @@
       animation: rotate 1s linear infinite;
     }
   }
+  p {
+    margin: 0 auto;
+  }
+
   @keyframes rotate {
     0% {
       transform: rotate(0deg);

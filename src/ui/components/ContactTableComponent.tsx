@@ -1,4 +1,5 @@
 import { useContactTable } from '@/lib/hooks/useContactTable'
+import { formatDateString } from '@/lib/utils/datatime'
 import { ButtonCommon } from '../common/ButtonCommon'
 
 export const ContactTable = () => {
@@ -16,19 +17,22 @@ export const ContactTable = () => {
         </tr>
       </thead>
       <tbody>
-        {listContacts?.map((contact) => (
-          <tr key={contact.id}>
-            <td>{contact.id}</td>
-            <td>{contact.fullNames}</td>
-            <td>{contact.phone}</td>
-            <td>{contact.company}</td>
-            <td>{contact.created}</td>
-            <td>
-              <ButtonCommon text="Editar" onClick={updateContact} />
-              <ButtonCommon text="Eliminar" onClick={deleteContact} />
-            </td>
-          </tr>
-        ))}
+        {listContacts?.map((contact) => {
+          const date = formatDateString(contact.created)
+          return (
+            <tr key={contact.id}>
+              <td>{contact.id}</td>
+              <td>{contact.fullNames}</td>
+              <td>{contact.phone}</td>
+              <td>{contact.company}</td>
+              <td>{date}</td>
+              <td>
+                <ButtonCommon text="Editar" onClick={updateContact} />
+                <ButtonCommon text="Eliminar" onClick={deleteContact} />
+              </td>
+            </tr>
+          )
+        })}
       </tbody>
     </table>
   )
